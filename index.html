@@ -973,7 +973,7 @@
             elements.winnerDisplay.classList.remove('show');
 
             const finalDigits = String(finalNumber).padStart(3, '0').split('').map(Number);
-            const spinDuration = 3000; // 3 seconds of spinning
+            const spinDuration = 1000; // 1 second of spinning
             const spinInterval = 50; // Update every 50ms
             const iterations = spinDuration / spinInterval;
 
@@ -994,7 +994,7 @@
                 const finalDigit = finalDigits[reelIndex];
 
                 // Gradual slowdown
-                const slowdownSteps = 10;
+                const slowdownSteps = 5;
                 for (let step = 0; step < slowdownSteps; step++) {
                     const randomDigit = Math.floor(Math.random() * 10);
                     reel.style.top = `-${randomDigit * 200}px`;
@@ -1005,11 +1005,11 @@
                 // Final position
                 reel.style.top = `-${finalDigit * 200}px`;
                 playStopSound();
-                await sleep(300);
+                await sleep(100);
             }
 
             // Show winner
-            await sleep(500);
+            await sleep(200);
             showWinner(finalNumber);
         }
 
@@ -1048,7 +1048,7 @@
                     confetti.style.animationDelay = Math.random() * 0.5 + 's';
                     document.body.appendChild(confetti);
 
-                    setTimeout(() => confetti.remove(), 3000);
+                    setTimeout(() => confetti.remove(), 1000);
                 }, i * 30);
             }
         }
